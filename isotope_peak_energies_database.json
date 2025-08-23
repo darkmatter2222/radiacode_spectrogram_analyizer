@@ -1,0 +1,237 @@
+{
+  "isotope_gamma_energies_database": {
+    "created_date": "2025-08-22",
+    "description": "Comprehensive gamma-ray peak energies for isotope identification",
+    "detector_info": {
+      "type": "NaI(Tl)",
+      "channels": 1024,
+      "energy_range_keV": [0.0, 3000.0],
+      "resolution_FWHM_percent": 7.5
+    },
+    "isotopes": {
+      "K-40": {
+        "category": "background",
+        "half_life": "1.25e9 yr",
+        "primary_peaks": [
+          {"energy_keV": 1461.0, "intensity_percent": 10.7, "significance": "primary"}
+        ],
+        "description": "Natural background radioisotope, single prominent peak"
+      },
+      "Cs-137": {
+        "category": "calibration",
+        "half_life": "30.17 yr",
+        "primary_peaks": [
+          {"energy_keV": 32.0, "intensity_percent": 6.2, "significance": "Ba X-ray"},
+          {"energy_keV": 662.0, "intensity_percent": 85.1, "significance": "primary photopeak"}
+        ],
+        "description": "Primary calibration standard, very prominent 662 keV peak"
+      },
+      "Co-60": {
+        "category": "industrial",
+        "half_life": "5.27 yr",
+        "primary_peaks": [
+          {"energy_keV": 1173.2, "intensity_percent": 99.85, "significance": "primary"},
+          {"energy_keV": 1332.5, "intensity_percent": 99.98, "significance": "primary"}
+        ],
+        "description": "Industrial radiography source, two high-energy peaks"
+      },
+      "Am-241": {
+        "category": "industrial",
+        "half_life": "432.6 yr",
+        "primary_peaks": [
+          {"energy_keV": 26.0, "intensity_percent": 2.4, "significance": "Np X-ray"},
+          {"energy_keV": 59.5, "intensity_percent": 35.9, "significance": "primary"}
+        ],
+        "description": "Smoke detector source, low-energy peaks"
+      },
+      "Ba-133": {
+        "category": "calibration",
+        "half_life": "10.51 yr",
+        "primary_peaks": [
+          {"energy_keV": 30.9, "intensity_percent": 33.8, "significance": "Cs X-ray"},
+          {"energy_keV": 81.0, "intensity_percent": 32.3, "significance": "primary"},
+          {"energy_keV": 276.0, "intensity_percent": 7.2, "significance": "secondary"},
+          {"energy_keV": 302.9, "intensity_percent": 18.3, "significance": "secondary"},
+          {"energy_keV": 356.0, "intensity_percent": 62.1, "significance": "primary"}
+        ],
+        "description": "Multi-peak calibration source"
+      },
+      "Co-57": {
+        "category": "calibration",
+        "half_life": "271.8 d",
+        "primary_peaks": [
+          {"energy_keV": 122.1, "intensity_percent": 85.6, "significance": "primary"},
+          {"energy_keV": 136.5, "intensity_percent": 10.7, "significance": "secondary"}
+        ],
+        "description": "Medical imaging calibration source"
+      },
+      "I-131": {
+        "category": "medical",
+        "half_life": "8.02 d",
+        "primary_peaks": [
+          {"energy_keV": 284.0, "intensity_percent": 6.1, "significance": "secondary"},
+          {"energy_keV": 364.5, "intensity_percent": 81.7, "significance": "primary"},
+          {"energy_keV": 637.0, "intensity_percent": 7.2, "significance": "secondary"}
+        ],
+        "description": "Thyroid treatment isotope"
+      },
+      "I-123": {
+        "category": "medical",
+        "half_life": "13.2 h",
+        "primary_peaks": [
+          {"energy_keV": 27.0, "intensity_percent": 40.2, "significance": "Te X-ray"},
+          {"energy_keV": 159.0, "intensity_percent": 83.3, "significance": "primary"}
+        ],
+        "description": "Thyroid imaging isotope"
+      },
+      "F-18": {
+        "category": "medical",
+        "half_life": "109.8 min",
+        "primary_peaks": [
+          {"energy_keV": 511.0, "intensity_percent": 193.5, "significance": "annihilation"}
+        ],
+        "description": "PET scan isotope, positron emitter"
+      },
+      "Ga-67": {
+        "category": "medical",
+        "half_life": "3.26 d",
+        "primary_peaks": [
+          {"energy_keV": 93.3, "intensity_percent": 38.8, "significance": "primary"},
+          {"energy_keV": 184.6, "intensity_percent": 21.4, "significance": "secondary"},
+          {"energy_keV": 300.2, "intensity_percent": 16.8, "significance": "secondary"},
+          {"energy_keV": 393.5, "intensity_percent": 4.6, "significance": "tertiary"}
+        ],
+        "description": "Infection imaging isotope"
+      },
+      "In-111": {
+        "category": "medical",
+        "half_life": "2.8 d",
+        "primary_peaks": [
+          {"energy_keV": 171.3, "intensity_percent": 90.2, "significance": "primary"},
+          {"energy_keV": 245.4, "intensity_percent": 94.1, "significance": "primary"}
+        ],
+        "description": "White blood cell labeling isotope"
+      },
+      "Tl-201": {
+        "category": "medical",
+        "half_life": "3.04 d",
+        "primary_peaks": [
+          {"energy_keV": 69.9, "intensity_percent": 26.5, "significance": "Hg X-ray"},
+          {"energy_keV": 80.3, "intensity_percent": 20.1, "significance": "Hg X-ray"},
+          {"energy_keV": 135.3, "intensity_percent": 2.6, "significance": "secondary"},
+          {"energy_keV": 167.4, "intensity_percent": 10.0, "significance": "primary"}
+        ],
+        "description": "Cardiac perfusion imaging isotope"
+      },
+      "Tc-99m": {
+        "category": "medical",
+        "half_life": "6.01 h",
+        "primary_peaks": [
+          {"energy_keV": 140.5, "intensity_percent": 89.0, "significance": "primary"}
+        ],
+        "description": "Most common medical imaging isotope"
+      },
+      "Xe-133": {
+        "category": "medical",
+        "half_life": "5.24 d",
+        "primary_peaks": [
+          {"energy_keV": 30.0, "intensity_percent": 38.0, "significance": "Cs X-ray"},
+          {"energy_keV": 81.0, "intensity_percent": 37.1, "significance": "primary"}
+        ],
+        "description": "Lung ventilation imaging isotope"
+      },
+      "Cs-134": {
+        "category": "industrial",
+        "half_life": "2.06 yr",
+        "primary_peaks": [
+          {"energy_keV": 475.0, "intensity_percent": 1.5, "significance": "tertiary"},
+          {"energy_keV": 563.0, "intensity_percent": 8.3, "significance": "secondary"},
+          {"energy_keV": 605.0, "intensity_percent": 97.6, "significance": "primary"},
+          {"energy_keV": 796.0, "intensity_percent": 85.4, "significance": "primary"},
+          {"energy_keV": 1168.0, "intensity_percent": 1.8, "significance": "tertiary"},
+          {"energy_keV": 1365.0, "intensity_percent": 3.0, "significance": "tertiary"}
+        ],
+        "description": "Nuclear reactor byproduct"
+      },
+      "Ir-192": {
+        "category": "industrial",
+        "half_life": "73.8 d",
+        "primary_peaks": [
+          {"energy_keV": 296.0, "intensity_percent": 28.7, "significance": "secondary"},
+          {"energy_keV": 308.0, "intensity_percent": 29.7, "significance": "secondary"},
+          {"energy_keV": 316.0, "intensity_percent": 82.8, "significance": "primary"},
+          {"energy_keV": 468.0, "intensity_percent": 47.8, "significance": "primary"},
+          {"energy_keV": 482.0, "intensity_percent": 3.2, "significance": "tertiary"},
+          {"energy_keV": 604.0, "intensity_percent": 8.2, "significance": "tertiary"}
+        ],
+        "description": "Industrial radiography source"
+      },
+      "Se-75": {
+        "category": "industrial",
+        "half_life": "119.8 d",
+        "primary_peaks": [
+          {"energy_keV": 136.0, "intensity_percent": 58.5, "significance": "primary"},
+          {"energy_keV": 197.0, "intensity_percent": 3.0, "significance": "tertiary"},
+          {"energy_keV": 265.0, "intensity_percent": 58.8, "significance": "primary"},
+          {"energy_keV": 279.0, "intensity_percent": 25.0, "significance": "secondary"}
+        ],
+        "description": "Industrial gauging source"
+      },
+      "Yb-169": {
+        "category": "industrial",
+        "half_life": "32.0 d",
+        "primary_peaks": [
+          {"energy_keV": 63.0, "intensity_percent": 43.7, "significance": "primary"},
+          {"energy_keV": 93.0, "intensity_percent": 2.5, "significance": "tertiary"},
+          {"energy_keV": 109.0, "intensity_percent": 17.4, "significance": "secondary"},
+          {"energy_keV": 130.0, "intensity_percent": 11.4, "significance": "secondary"},
+          {"energy_keV": 198.0, "intensity_percent": 35.9, "significance": "primary"},
+          {"energy_keV": 308.0, "intensity_percent": 10.1, "significance": "secondary"}
+        ],
+        "description": "Industrial gauging source"
+      },
+      "U-238_series_Bi-214": {
+        "category": "background",
+        "half_life": "19.9 min",
+        "primary_peaks": [
+          {"energy_keV": 295.0, "intensity_percent": 18.5, "significance": "secondary"},
+          {"energy_keV": 352.0, "intensity_percent": 35.6, "significance": "primary"},
+          {"energy_keV": 609.0, "intensity_percent": 45.5, "significance": "primary"},
+          {"energy_keV": 1120.0, "intensity_percent": 14.9, "significance": "secondary"},
+          {"energy_keV": 1764.0, "intensity_percent": 15.3, "significance": "secondary"}
+        ],
+        "description": "Natural uranium decay chain product"
+      },
+      "Th-232_series_Tl-208": {
+        "category": "background",
+        "half_life": "3.05 min",
+        "primary_peaks": [
+          {"energy_keV": 583.0, "intensity_percent": 85.0, "significance": "primary"},
+          {"energy_keV": 2614.0, "intensity_percent": 99.8, "significance": "primary"}
+        ],
+        "description": "Natural thorium decay chain product, highest energy peak"
+      },
+      "U-235_peak": {
+        "category": "background",
+        "half_life": "7.04e8 yr",
+        "primary_peaks": [
+          {"energy_keV": 185.7, "intensity_percent": 57.2, "significance": "primary"}
+        ],
+        "description": "Natural uranium isotope"
+      }
+    },
+    "peak_significance_levels": {
+      "primary": "Major peaks >20% intensity, used for identification",
+      "secondary": "Medium peaks 5-20% intensity, confirmatory",
+      "tertiary": "Minor peaks <5% intensity, supplementary",
+      "annihilation": "511 keV from positron annihilation",
+      "X-ray": "Characteristic X-rays from daughter nuclei"
+    },
+    "detection_thresholds": {
+      "strong_detection": "> 75% confidence",
+      "moderate_detection": "50-75% confidence", 
+      "weak_detection": "25-50% confidence",
+      "not_detected": "< 25% confidence"
+    }
+  }
+}

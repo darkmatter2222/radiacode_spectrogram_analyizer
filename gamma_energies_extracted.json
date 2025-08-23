@@ -1,0 +1,317 @@
+{
+  "K-40": {
+    "category": "background",
+    "half_life": "1.25e9 yr",
+    "gamma_energies_keV": [
+      1461.0
+    ],
+    "gamma_weights_rel": [
+      1.0
+    ],
+    "primary_energy_keV": 1461.0
+  },
+  "U-238_series_Bi-214": {
+    "category": "background",
+    "half_life": "\u2014",
+    "gamma_energies_keV": [
+      295.0,
+      352.0,
+      609.0,
+      1120.0,
+      1764.0
+    ],
+    "gamma_weights_rel": [
+      0.25,
+      0.35,
+      0.8,
+      0.35,
+      0.5
+    ],
+    "primary_energy_keV": 1764.0
+  },
+  "Th-232_series_Tl-208": {
+    "category": "background",
+    "half_life": "\u2014",
+    "gamma_energies_keV": [
+      583.0,
+      2614.0
+    ],
+    "gamma_weights_rel": [
+      0.4,
+      1.0
+    ],
+    "primary_energy_keV": 2614.0
+  },
+  "Cs-137": {
+    "category": "calibration",
+    "half_life": "30.17 yr",
+    "gamma_energies_keV": [
+      32.0,
+      662.0
+    ],
+    "gamma_weights_rel": [
+      0.15,
+      1.0
+    ],
+    "primary_energy_keV": 662.0
+  },
+  "Cs-134": {
+    "category": "industrial",
+    "half_life": "2.06 yr",
+    "gamma_energies_keV": [
+      475.0,
+      563.0,
+      605.0,
+      796.0,
+      1168.0,
+      1365.0
+    ],
+    "gamma_weights_rel": [
+      0.2,
+      0.2,
+      0.9,
+      1.0,
+      0.15,
+      0.1
+    ],
+    "primary_energy_keV": 1365.0
+  },
+  "Co-60": {
+    "category": "industrial",
+    "half_life": "5.27 yr",
+    "gamma_energies_keV": [
+      1173.2,
+      1332.5
+    ],
+    "gamma_weights_rel": [
+      1.0,
+      1.0
+    ],
+    "primary_energy_keV": 1332.5
+  },
+  "Ir-192": {
+    "category": "industrial",
+    "half_life": "73.83 d",
+    "gamma_energies_keV": [
+      296.0,
+      308.0,
+      316.0,
+      468.0,
+      482.0,
+      604.0
+    ],
+    "gamma_weights_rel": [
+      0.5,
+      0.5,
+      0.25,
+      0.7,
+      0.25,
+      0.6
+    ],
+    "primary_energy_keV": 604.0
+  },
+  "Se-75": {
+    "category": "industrial",
+    "half_life": "119.8 d",
+    "gamma_energies_keV": [
+      136.0,
+      197.0,
+      265.0,
+      279.0
+    ],
+    "gamma_weights_rel": [
+      0.7,
+      0.3,
+      0.9,
+      0.4
+    ],
+    "primary_energy_keV": 279.0
+  },
+  "Yb-169": {
+    "category": "industrial",
+    "half_life": "32.0 d",
+    "gamma_energies_keV": [
+      63.0,
+      93.0,
+      109.0,
+      130.0,
+      198.0,
+      308.0
+    ],
+    "gamma_weights_rel": [
+      0.6,
+      0.5,
+      0.3,
+      0.35,
+      0.25,
+      0.2
+    ],
+    "primary_energy_keV": 308.0
+  },
+  "Am-241": {
+    "category": "industrial",
+    "half_life": "432.2 yr",
+    "gamma_energies_keV": [
+      26.0,
+      59.5
+    ],
+    "gamma_weights_rel": [
+      0.3,
+      1.0
+    ],
+    "primary_energy_keV": 59.5
+  },
+  "Ba-133": {
+    "category": "calibration",
+    "half_life": "10.5 yr",
+    "gamma_energies_keV": [
+      30.9,
+      81.0,
+      276.0,
+      302.9,
+      356.0
+    ],
+    "gamma_weights_rel": [
+      0.5,
+      1.0,
+      0.6,
+      0.5,
+      0.9
+    ],
+    "primary_energy_keV": 356.0
+  },
+  "Co-57": {
+    "category": "calibration",
+    "half_life": "271.8 d",
+    "gamma_energies_keV": [
+      122.1,
+      136.5
+    ],
+    "gamma_weights_rel": [
+      1.0,
+      0.25
+    ],
+    "primary_energy_keV": 136.5
+  },
+  "U-235_peak": {
+    "category": "background",
+    "half_life": "7.04e8 yr",
+    "gamma_energies_keV": [
+      185.7
+    ],
+    "gamma_weights_rel": [
+      1.0
+    ],
+    "primary_energy_keV": 185.7
+  },
+  "Tc-99m": {
+    "category": "medical",
+    "half_life": "6.01 h",
+    "gamma_energies_keV": [
+      140.5
+    ],
+    "gamma_weights_rel": [
+      1.0
+    ],
+    "primary_energy_keV": 140.5
+  },
+  "I-131": {
+    "category": "medical",
+    "half_life": "8.02 d",
+    "gamma_energies_keV": [
+      284.0,
+      364.5,
+      637.0
+    ],
+    "gamma_weights_rel": [
+      0.2,
+      1.0,
+      0.1
+    ],
+    "primary_energy_keV": 637.0
+  },
+  "I-123": {
+    "category": "medical",
+    "half_life": "13.2 h",
+    "gamma_energies_keV": [
+      27.0,
+      159.0
+    ],
+    "gamma_weights_rel": [
+      0.25,
+      1.0
+    ],
+    "primary_energy_keV": 159.0
+  },
+  "F-18": {
+    "category": "medical",
+    "half_life": "109.8 m",
+    "gamma_energies_keV": [
+      511.0
+    ],
+    "gamma_weights_rel": [
+      1.0
+    ],
+    "primary_energy_keV": 511.0
+  },
+  "Ga-67": {
+    "category": "medical",
+    "half_life": "78.3 h",
+    "gamma_energies_keV": [
+      93.3,
+      184.6,
+      300.2,
+      393.5
+    ],
+    "gamma_weights_rel": [
+      1.0,
+      0.5,
+      0.4,
+      0.15
+    ],
+    "primary_energy_keV": 393.5
+  },
+  "In-111": {
+    "category": "medical",
+    "half_life": "67.3 h",
+    "gamma_energies_keV": [
+      171.3,
+      245.4
+    ],
+    "gamma_weights_rel": [
+      1.0,
+      1.0
+    ],
+    "primary_energy_keV": 245.4
+  },
+  "Tl-201": {
+    "category": "medical",
+    "half_life": "73.1 h",
+    "gamma_energies_keV": [
+      69.9,
+      80.3,
+      135.3,
+      167.4
+    ],
+    "gamma_weights_rel": [
+      1.0,
+      0.6,
+      0.15,
+      0.15
+    ],
+    "primary_energy_keV": 167.4
+  },
+  "Xe-133": {
+    "category": "medical",
+    "half_life": "5.25 d",
+    "gamma_energies_keV": [
+      30.0,
+      81.0
+    ],
+    "gamma_weights_rel": [
+      0.4,
+      1.0
+    ],
+    "primary_energy_keV": 81.0
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "extraction_info": {
+    "source_file": "C:\\Users\\ryans\\source\\repos\\radiacode_spectrogram_analyizer\\master_spectra\\isotope_baselines_22.json",
+    "extraction_date": "2025-08-21",
+    "total_isotopes": 21,
+    "categories": {
+      "background": 4,
+      "calibration": 3,
+      "industrial": 6,
+      "medical": 8
+    }
+  },
+  "detector_config": {
+    "type": "NaI(Tl)",
+    "channels": 1024,
+    "energy_range_keV": [
+      0.0,
+      3000.0
+    ],
+    "energy_resolution_model": "FWHM(E)=a*sqrt(E), ~7% at 662 keV",
+    "a_res": 1.8010552462376053
+  },
+  "isotope_list": {
+    "background": [
+      "K-40",
+      "U-238_series_Bi-214",
+      "Th-232_series_Tl-208",
+      "U-235_peak"
+    ],
+    "calibration": [
+      "Cs-137",
+      "Ba-133",
+      "Co-57"
+    ],
+    "industrial": [
+      "Cs-134",
+      "Co-60",
+      "Ir-192",
+      "Se-75",
+      "Yb-169",
+      "Am-241"
+    ],
+    "medical": [
+      "Tc-99m",
+      "I-131",
+      "I-123",
+      "F-18",
+      "Ga-67",
+      "In-111",
+      "Tl-201",
+      "Xe-133"
+    ]
+  }
+}
