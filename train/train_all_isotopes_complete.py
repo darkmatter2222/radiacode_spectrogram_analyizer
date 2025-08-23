@@ -26,52 +26,57 @@ import pandas as pd
 
 class IsotopeCNN(nn.Module):
     """CNN for isotope detection from gamma spectra."""
-    
+
     def __init__(self, input_size=1024):
         super(IsotopeCNN, self).__init__()
-        
+
         # 1D Convolutional layers for spectral data
-        self.conv1 = nn.Conv1d(1, 32, kernel_size=7, padding=3)
-        self.conv2 = nn.Conv1d(32, 64, kernel_size=5, padding=2)
-        self.conv3 = nn.Conv1d(64, 128, kernel_size=3, padding=1)
-        self.conv4 = nn.Conv1d(128, 256, kernel_size=3, padding=1)
-        
+        # Widened channels and slightly larger kernels to capture more detail
+        self.conv1 = nn.Conv1d(1, 64, kernel_size=9, padding=4)
+        self.bn1 = nn.BatchNorm1d(64)
+        self.conv2 = nn.Conv1d(64, 128, kernel_size=7, padding=3)
+        self.bn2 = nn.BatchNorm1d(128)
+        self.conv3 = nn.Conv1d(128, 256, kernel_size=5, padding=2)
+        self.bn3 = nn.BatchNorm1d(256)
+        self.conv4 = nn.Conv1d(256, 512, kernel_size=3, padding=1)
+        self.bn4 = nn.BatchNorm1d(512)
+
         # Pooling and dropout
         self.pool = nn.MaxPool1d(2)
-        self.dropout = nn.Dropout(0.3)
-        
+        self.dropout = nn.Dropout(0.35)
+
         # Calculate size after convolutions and pooling
         # After 4 conv+pool layers: 1024 -> 512 -> 256 -> 128 -> 64
-        self.fc_input_size = 256 * 64
-        
+        self.fc_input_size = 512 * 64
+
         # Fully connected layers
-        self.fc1 = nn.Linear(self.fc_input_size, 512)
-        self.fc2 = nn.Linear(512, 128)
-        self.fc3 = nn.Linear(128, 1)
-        
+        self.fc1 = nn.Linear(self.fc_input_size, 1024)
+        self.fc2 = nn.Linear(1024, 256)
+        self.fc3 = nn.Linear(256, 1)
+
         # Activation functions
         self.relu = nn.ReLU()
         self.sigmoid = nn.Sigmoid()
-    
+
     def forward(self, x):
         # Add channel dimension if needed
         if len(x.shape) == 2:
             x = x.unsqueeze(1)
-        
+
         # Convolutional layers
-        x = self.pool(self.relu(self.conv1(x)))
-        x = self.pool(self.relu(self.conv2(x)))
-        x = self.pool(self.relu(self.conv3(x)))
-        x = self.pool(self.relu(self.conv4(x)))
-        
+        x = self.pool(self.relu(self.bn1(self.conv1(x))))
+        x = self.pool(self.relu(self.bn2(self.conv2(x))))
+        x = self.pool(self.relu(self.bn3(self.conv3(x))))
+        x = self.pool(self.relu(self.bn4(self.conv4(x))))
+
         # Flatten for fully connected layers
         x = x.view(x.size(0), -1)
-        
+
         # Fully connected layers
         x = self.dropout(self.relu(self.fc1(x)))
         x = self.dropout(self.relu(self.fc2(x)))
         x = self.sigmoid(self.fc3(x))
-        
+
         return x.squeeze()
 
 class IsotopeDataset(Dataset):
@@ -121,6 +126,20 @@ class IsotopeDataset(Dataset):
         # Convert to tensors
         self.spectra = torch.FloatTensor(np.array(self.spectra))
         self.labels = torch.FloatTensor(np.array(self.labels))
+
+        # Preprocess: sanitize, zero last channel, and normalize per spectrum
+        with torch.no_grad():
+            # Replace NaN/Inf with zero and clamp negatives
+            self.spectra = torch.nan_to_num(self.spectra, nan=0.0, posinf=0.0, neginf=0.0)
+            self.spectra = torch.clamp(self.spectra, min=0.0)
+            # Always set the last channel to 0
+            if self.spectra.dim() == 2 and self.spectra.size(1) > 0:
+                self.spectra[:, -1] = 0.0
+            # L1 normalize each spectrum (sum to 1); if sum==0, leave zeros
+            sums = self.spectra.sum(dim=1, keepdim=True)
+            nonzero = sums.squeeze(1) > 0
+            self.spectra[nonzero] = self.spectra[nonzero] / sums[nonzero]
+        
         
         print(f"   Dataset size: {len(self.spectra):,} samples")
         print(f"   Positive samples: {self.labels.sum().item():,.0f} ({100*self.labels.mean().item():.1f}%)")
@@ -299,21 +318,22 @@ def train_single_isotope_complete(isotope_name, data_path, models_dir, epochs=20
             dataset, [train_size, val_size, test_size],
             generator=torch.Generator().manual_seed(42)
         )
-        
+
         print(f"   Training: {len(train_dataset):,} samples")
         print(f"   Validation: {len(val_dataset):,} samples")
         print(f"   Test: {len(test_dataset):,} samples")
-        
+
         # Create data loaders
-        train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=0)
-        val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=0)
-        test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=0)
-        
+        pin = (device.type == 'cuda')
+        train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=0, pin_memory=pin)
+        val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=0, pin_memory=pin)
+        test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=0, pin_memory=pin)
+
         # Initialize model
         model = IsotopeCNN().to(device)
         criterion = nn.BCELoss()
         optimizer = optim.Adam(model.parameters(), lr=learning_rate)
-        scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=15, gamma=0.5)
+        scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=max(1, epochs // 2), gamma=0.5)
         
         # Training tracking
         training_history = {
@@ -340,7 +360,7 @@ def train_single_isotope_complete(isotope_name, data_path, models_dir, epochs=20
             train_total = 0
             
             for batch_spectra, batch_labels in train_loader:
-                batch_spectra, batch_labels = batch_spectra.to(device), batch_labels.to(device)
+                batch_spectra, batch_labels = batch_spectra.to(device, non_blocking=True), batch_labels.to(device, non_blocking=True)
                 
                 optimizer.zero_grad()
                 outputs = model(batch_spectra)
@@ -366,7 +386,7 @@ def train_single_isotope_complete(isotope_name, data_path, models_dir, epochs=20
             
             with torch.no_grad():
                 for batch_spectra, batch_labels in val_loader:
-                    batch_spectra, batch_labels = batch_spectra.to(device), batch_labels.to(device)
+                    batch_spectra, batch_labels = batch_spectra.to(device, non_blocking=True), batch_labels.to(device, non_blocking=True)
                     
                     outputs = model(batch_spectra)
                     loss = criterion(outputs, batch_labels)
@@ -540,7 +560,7 @@ def train_all_isotopes_complete():
     print()
     
     # Training parameters
-    epochs = 25
+    epochs = 3
     batch_size = 32
     learning_rate = 0.001
     data_path = "O:/master_data_collection/isotope"
